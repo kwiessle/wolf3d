@@ -1,0 +1,16 @@
+
+static char *zdp[] ={
+"10 10 2 1",
+"a	c #00FF00",
+"z	c #FF0000",
+"aazzaazzaa",
+"aazzaazzaa",
+"zzaazzaazz",
+"zzaazzaazz",
+"aazzaazzaa",
+"aazzaazzaa",
+"zzaazzaazz",
+"zzaazzaazz",
+"aazzaazzaa",
+"aazzaazzaa",
+};
