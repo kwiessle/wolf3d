@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/20 11:30:01 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/20 15:09:06 by kwiessle         ###   ########.fr       */
+/*   Created: 2016/05/24 14:26:53 by kwiessle          #+#    #+#             */
+/*   Updated: 2016/05/24 15:44:25 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-//#include "../textures/plasma_maze.xpm"
 
-int		main(void)
+int		check_line(char *line)
 {
-	void	*mlx;
-	void	*win;
-	t_img	*img;
 	int		i;
 
-	i = 10;
-	if (!(img = (t_img *)malloc(sizeof(t_img))))
-		return (0);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 300, 300, "wolf3d");
-	img->img = mlx_xpm_to_image(mlx, zdp, &i, &i);
-	mlx_put_image_to_window(mlx, win, img->img, 0, 0);
-	mlx_put_image_to_window(mlx, win, img->img, 128, 0);
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != '1' && line[i] != ' ')
+			ft_error("Border Map Error");
+		i++;
+	}
+	return (0);
+}
 
-	mlx_loop(mlx);
+int		check_border(char *line)
+{
+	static int i = 0;
+
+	if (i == 0)
+	{
+		while (line[i])
+			i++;
+	}
+	if (line[0] != '1' || line[i - 1] != '1')
+		ft_error("Border Map Error");
 	return (0);
 }

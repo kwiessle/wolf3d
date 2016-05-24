@@ -6,13 +6,15 @@
 #    By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/20 11:28:07 by kwiessle          #+#    #+#              #
-#    Updated: 2016/05/20 12:56:52 by kwiessle         ###   ########.fr        #
+#    Updated: 2016/05/24 14:33:24 by kwiessle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= wolf3d
 
 SRCS= srcs/main.c \
+	  srcs/parsing.c \
+	  srcs/checker.c \
 
 OBJS= $(SRCS:.c=.o)
 INCLUDES= -I libft/includes -I includes -I mlx/
