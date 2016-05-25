@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 12:26:29 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/24 15:01:53 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/25 12:25:41 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_map		*add_node(t_map *list, t_map *elem)
 	return (list);
 }
 
-t_map		*convert_map(t_map *list, char *line)
+t_map		*convert_map(t_env *env, t_map *list, char *line)
 {
 	int				x;
 	char			**map;
@@ -57,11 +57,13 @@ t_map		*convert_map(t_map *list, char *line)
 		x++;
 	}
 	y++;
+	env->xmax = x;
+	env->ymax = y;
 	free(map);
 	return (list);
 }
 
-t_map		*get_map(int fd)
+t_map		*get_map(int fd, t_env *env)
 {
 	char			*line;
 	t_map			*new;
@@ -71,7 +73,7 @@ t_map		*get_map(int fd)
 	if (get_next_line(fd, &line))
 	{
 		size = ft_tablen(ft_strsplit(line, ' '));
-		new = convert_map(new, line);
+		new = convert_map(env, new, line);
 		check_line(line);
 	}
 	while (get_next_line(fd, &line) > 0)
@@ -79,7 +81,7 @@ t_map		*get_map(int fd)
 		if (ft_tablen(ft_strsplit(line, ' ')) != size)
 			ft_error("map isn't a square\n");
 		check_border(line);
-		new = convert_map(new, line);
+		new = convert_map(env, new, line);
 	}
 	check_line(line);
 	return (new);

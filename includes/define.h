@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/20 11:30:01 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/25 16:21:15 by kwiessle         ###   ########.fr       */
+/*   Created: 2016/05/25 11:31:22 by kwiessle          #+#    #+#             */
+/*   Updated: 2016/05/25 11:32:19 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
-//#include "../textures/plasma_maze.xpm"
+#ifndef DEFINE_H
+# define DEFINE_H
 
-int		main(int ac, char **av)
-{
-	t_env	*env;
-	int		fd;
+# define X_WIN 800
+# define Y_WIN 800
 
-	(void)ac;
-	fd = open(av[1], O_RDONLY);
-	env = init_env(fd);
-	raycasting(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img->img, 0, 0);
-	mlx_loop(env->mlx);
-	return (0);
-}
+#endif
+

@@ -6,7 +6,7 @@
 #    By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/20 11:28:07 by kwiessle          #+#    #+#              #
-#    Updated: 2016/05/24 14:33:24 by kwiessle         ###   ########.fr        #
+#    Updated: 2016/05/25 15:00:30 by kwiessle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,10 @@ NAME= wolf3d
 SRCS= srcs/main.c \
 	  srcs/parsing.c \
 	  srcs/checker.c \
+	  srcs/init_env.c \
+	  srcs/image.c \
+	  srcs/raycasting.c \
+	  srcs/searchinlist.c
 
 OBJS= $(SRCS:.c=.o)
 INCLUDES= -I libft/includes -I includes -I mlx/
