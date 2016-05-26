@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:28:40 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/25 15:01:34 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/26 13:02:25 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void		color(t_env *env);
 void		check_wall(t_env *env);
 void		init_ray(t_env *env, int x);
 int			searchinlist(int x, int y, t_env *env);
+int			keyboard(int keycode, t_env *env);
+void		rot_left(t_env *env);
+void		rot_right(t_env *env);
+void		expose(t_env *env);
+void		moove(int keycode, t_env *env);
 
 
 #endif

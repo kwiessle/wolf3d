@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 11:27:02 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/25 16:53:44 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/26 14:18:18 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_env		*init_env(int fd)
 	env->posy = (double)env->ymax / 2;
 	printf("posX %f\n", env->posx);
 	printf("posY %f\n", env->posy);
-	env->dirx = 1;
+	env->dirx = -1;
 	env->diry = 0;
 	env->xmax = 0;
 	env->ymax = 0;
@@ -36,7 +36,7 @@ t_env		*init_env(int fd)
 	env->oldtime = env->time;
 	env->time = clock();
 	env->fps = (env->time - env->oldtime) / 1000.0;
-	env->movespeed = env->fps * 0.003;
-	env->rotspeed = env->fps * 0.001;
+	env->movespeed = env->fps * 0.004;
+	env->rotspeed = env->fps * 0.002;
 	return (env);
 }

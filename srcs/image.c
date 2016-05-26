@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 11:34:29 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/25 16:49:02 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/26 14:38:53 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,12 @@ void		pixel_to_img(t_env *env, int x, int y, int color)
 
 void		draw_vertical(int x, t_env *env)
 {
-	printf("stqrt %d\n", env->drawstart);
-	printf("end %d\n", env->drawend);
 	if (env->drawstart < env->drawend)
 	{
 		while (env->drawstart <= env->drawend)
 		{
 			pixel_to_img(env, x, env->drawstart, env->color);
 			env->drawstart++;
-		//	printf("%d\n", env->drawstart);
 		}
 	}
 	else
@@ -53,7 +50,6 @@ void		draw_vertical(int x, t_env *env)
 		{
 			pixel_to_img(env, x, env->drawstart, env->color);
 			env->drawstart--;
-		//	printf("%d\n", env->drawstart);
 		}
 	}
 }

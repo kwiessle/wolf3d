@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 12:29:27 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/25 16:52:14 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/26 13:22:50 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void		color(t_env *env)
 	env->lineheight = (int)(Y_WIN / env->perpwalldist);
 	env->drawstart = -env->lineheight / 2 + Y_WIN / 2;
 	env->drawend = env->lineheight / 2 + Y_WIN / 2;
-	printf("%d\n", env->drawstart);
-	printf("%d\n", env->drawend);
 	if (env->drawstart < 0)
 		env->drawstart = 0;
 	if (env->drawend >= Y_WIN)

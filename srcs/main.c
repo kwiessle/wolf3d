@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:30:01 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/25 16:21:15 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/26 11:09:11 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(int ac, char **av)
 	env = init_env(fd);
 	raycasting(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img->img, 0, 0);
+	mlx_hook(env->win, 2, 3, keyboard, env);
 	mlx_loop(env->mlx);
 	return (0);
 }
