@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 14:26:53 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/24 15:44:25 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 19:21:28 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int		check_border(char *line)
 		while (line[i])
 			i++;
 	}
-	if (line[0] != '1' || line[i - 1] != '1')
+	if (line[0] != '1' || line[0]
+	line[i - 1] != '1')
 		ft_error("Border Map Error");
 	return (0);
 }

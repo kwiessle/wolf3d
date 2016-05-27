@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 11:27:02 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/27 13:43:40 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 19:28:01 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@ t_env		*init_env(int fd)
 {
 	t_env		*env;
 
+	(void)fd;
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (NULL);
 	env->mlx = mlx_init();
 	env->win = mlx_new_window(env->mlx, X_WIN, Y_WIN, "Wolf3D");
-	env->map = get_map(fd, env);
+//	env->map = get_map(fd, env);
 	env->img = init_img(env);
-	env->posx = (double)env->xmax / 2;
-	env->posy = (double)env->ymax / 2;
+	env->posx = 3;
+	env->posy = 5;
 	env->dirx = -1;
 	env->diry = 0;
 	env->xmax = 0;

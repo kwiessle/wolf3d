@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 10:50:48 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/27 16:59:03 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 19:38:50 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	clear_tab(t_env *env)
 
 void	expose(t_env *e)
 {
-	mlx_destroy_image(e->mlx, e->img->img);
-	e->img = init_img(e);
+//	mlx_destroy_image(e->mlx, e->img->img);
+//	e->img = init_img(e);
 	clear_tab(e);
 	raycasting(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);

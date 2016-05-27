@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:28:40 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/27 13:24:32 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 19:12:36 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		raycasting(t_env *env);
 void		get_color(t_env *env);
 void		check_wall(t_env *env);
 void		init_ray(t_env *env, int x);
-int			searchinlist(int x, int y, t_env *env);
+//int			searchinlist(int x, int y, t_env *env);
 int			keyboard(int keycode, t_env *env);
 void		rot_left(t_env *env);
 void		rot_right(t_env *env);
@@ -50,6 +50,7 @@ int			**init_tab(t_env *env);
 t_texture	*create_texture(t_env *env);
 void		get_texture(int x, int y, int color, t_env *env);
 void		clear_tab(t_env *env);
+int			check_map(int x, int y);
 
 
 

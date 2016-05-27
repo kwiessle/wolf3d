@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 12:29:27 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/27 13:34:34 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 19:45:39 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		check_wall(t_env *env)
 			env->mapy += env->stepy;
 			env->side = 1;
 		}
-		if (searchinlist(env->mapx, env->mapy, env) > 0)
+		if (check_map(env->mapx, env->mapy) > 0)
 			env->hit = 1;
 	}
 }
@@ -83,13 +83,13 @@ void		get_texture(int x, int y, int color, t_env *env)
 	while (y < env->drawend)
 	{
 		env->texy = (y * 2 - Y_WIN + env->lineheight) * 32 / env->lineheight;
-		if (searchinlist(env->mapx, env->mapy, env) == 1)
+		if (check_map(env->mapx, env->mapy) == 1)
 			color = env->texture->tab1[64 * env->texy + env->texx];
-		else if (searchinlist(env->mapx, env->mapy, env) == 2)
+		else if (check_map(env->mapx, env->mapy) == 2)
 			color = env->texture->tab2[64 * env->texy + env->texx];
-		else if (searchinlist(env->mapx, env->mapy, env) == 3)
+		else if (check_map(env->mapx, env->mapy) == 3)
 			color = env->texture->tab3[64 * env->texy + env->texx];
-		else if (searchinlist(env->mapx, env->mapy, env) == 4)
+		else if (check_map(env->mapx, env->mapy) == 4)
 			color = env->texture->tab4[64 * env->texy + env->texx];
 		env->buffer[y][x] = color;
 		y++;
@@ -104,7 +104,7 @@ void		get_texture(int x, int y, int color, t_env *env)
 		env->floorwallx = env->mapx + 1.0;
 		env->floorwally = env->mapy + env->wallx;
 	}
-	else if (env->side == 1 && env->raydirx < 0)
+	else if (env->side == 1 && env->raydiry > 0)
 	{
 		env->floorwallx = env->mapx + env->wallx;
 		env->floorwally = env->mapy;

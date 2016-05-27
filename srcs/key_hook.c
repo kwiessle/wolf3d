@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 12:05:57 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/26 13:13:52 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 19:15:05 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void		moove(int keycode, t_env *e)
 {
 	if (keycode == UP)
 	{
-		if (!searchinlist((int)(e->posx + e->dirx * e->movespeed), \
-					(int)e->posy, e) && !searchinlist((int)e->posx, \
-					(int)(e->posy + e->diry * e->movespeed), e))
+		if (!check_map((int)(e->posx + e->dirx * e->movespeed), \
+					(int)e->posy) && !check_map((int)e->posx, \
+					(int)(e->posy + e->diry * e->movespeed)))
 		{
 			e->posx += e->dirx * e->movespeed;
 			e->posy += e->diry * e->movespeed;
@@ -56,9 +56,9 @@ void		moove(int keycode, t_env *e)
 	}
 	if (keycode == DOWN)
 	{
-		if (!searchinlist((int)(e->posx - e->dirx * e->movespeed), \
-					(int)e->posy, e) && !searchinlist((int)e->posx, \
-					(int)(e->posy - e->diry * e->movespeed), e))
+		if (!check_map((int)(e->posx - e->dirx * e->movespeed), \
+					(int)e->posy) && !check_map((int)e->posx, \
+					(int)(e->posy - e->diry * e->movespeed)))
 		{
 			e->posx -= e->dirx * e->movespeed;
 			e->posy -= e->diry * e->movespeed;

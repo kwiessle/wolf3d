@@ -6,22 +6,21 @@
 #    By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/20 11:28:07 by kwiessle          #+#    #+#              #
-#    Updated: 2016/05/27 13:25:54 by kwiessle         ###   ########.fr        #
+#*   Updated: 2016/05/27 19:22:00 by kwiessle         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME= wolf3d
 
 SRCS= srcs/main.c \
-	  srcs/parsing.c \
-	  srcs/checker.c \
 	  srcs/init_env.c \
 	  srcs/image.c \
 	  srcs/raycasting.c \
 	  srcs/searchinlist.c \
 	  srcs/key_function.c \
 	  srcs/key_hook.c \
-	  srcs/texture.c
+	  srcs/texture.c \
+	  srcs/levels.c
 
 OBJS= $(SRCS:.c=.o)
 INCLUDES= -I libft/includes -I includes -I mlx/
