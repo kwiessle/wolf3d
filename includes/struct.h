@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 12:08:50 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/25 12:44:07 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 13:21:06 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,25 @@ typedef struct		s_img
 	int				size_line;
 	int				endian;
 }					t_img;
+
+typedef struct		s_texture
+{
+	int				bpp;
+	int				size_line;
+	int				endian;
+	void			*t_1;
+	int				*tab1;
+	void			*t_2;
+	int				*tab2;
+	void			*t_3;
+	int				*tab3;
+	void			*t_4;
+	int				*tab4;
+	void			*t_floor;
+	int				*floor;
+	void			*t_roof;
+	int				*roof;
+}					t_texture;
 
 typedef struct		s_env
 {
@@ -67,8 +86,24 @@ typedef struct		s_env
 	int				color;
 	double			movespeed;
 	double			rotspeed;
+	double			wallx;
+	int				texx;
+	int				texy;
+	double			floorwallx;
+	double			floorwally;
+	double			c_floorx;
+	double			c_floory;
+	int				floortexx;
+	int				floortexy;
+	double			distwall;
+	double			distplayer;
+	int				*tab;
+	int				**buffer;
+	double			c_dist;
+	double			weight;
 	t_map			*map;
 	t_img			*img;
+	t_texture		*texture;
 }					t_env;
 
 

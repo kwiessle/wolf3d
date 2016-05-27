@@ -6,7 +6,7 @@
 #    By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/20 11:28:07 by kwiessle          #+#    #+#              #
-#    Updated: 2016/05/26 12:22:14 by kwiessle         ###   ########.fr        #
+#    Updated: 2016/05/27 13:25:54 by kwiessle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS= srcs/main.c \
 	  srcs/raycasting.c \
 	  srcs/searchinlist.c \
 	  srcs/key_function.c \
-	  srcs/key_hook.c
+	  srcs/key_hook.c \
+	  srcs/texture.c
 
 OBJS= $(SRCS:.c=.o)
 INCLUDES= -I libft/includes -I includes -I mlx/

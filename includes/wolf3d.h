@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:28:40 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/26 13:02:25 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 13:24:32 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_img		*init_img(t_env *env);
 void		pixel_to_img(t_env *env, int x, int y, int color);
 void		draw_vertical(int x, t_env *env);
 void		raycasting(t_env *env);
-void		color(t_env *env);
+void		get_color(t_env *env);
 void		check_wall(t_env *env);
 void		init_ray(t_env *env, int x);
 int			searchinlist(int x, int y, t_env *env);
@@ -46,6 +46,13 @@ void		rot_left(t_env *env);
 void		rot_right(t_env *env);
 void		expose(t_env *env);
 void		moove(int keycode, t_env *env);
+int			**init_tab(t_env *env);
+t_texture	*create_texture(t_env *env);
+void		get_texture(int x, int y, int color, t_env *env);
+void		clear_tab(t_env *env);
+
+
+
 
 
 #endif

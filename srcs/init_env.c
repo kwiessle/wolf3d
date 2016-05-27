@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 11:27:02 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/26 14:18:18 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 13:43:40 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_env		*init_env(int fd)
 	env->img = init_img(env);
 	env->posx = (double)env->xmax / 2;
 	env->posy = (double)env->ymax / 2;
-	printf("posX %f\n", env->posx);
-	printf("posY %f\n", env->posy);
 	env->dirx = -1;
 	env->diry = 0;
 	env->xmax = 0;
@@ -38,5 +36,8 @@ t_env		*init_env(int fd)
 	env->fps = (env->time - env->oldtime) / 1000.0;
 	env->movespeed = env->fps * 0.004;
 	env->rotspeed = env->fps * 0.002;
+	env->tab = (int *)mlx_get_data_addr(env->img->img, &env->img->bpp, &env->img->size_line, &env->img->endian);
+	env->buffer = init_tab(env);
+	env->texture = create_texture(env);
 	return (env);
 }

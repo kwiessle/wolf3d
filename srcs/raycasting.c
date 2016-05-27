@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/25 12:29:27 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/26 13:22:50 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 13:34:34 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		check_wall(t_env *env)
 	}
 }
 
-void		color(t_env *env)
+void		get_color(t_env *env)
 {
 	env->lineheight = (int)(Y_WIN / env->perpwalldist);
 	env->drawstart = -env->lineheight / 2 + Y_WIN / 2;
@@ -65,26 +65,81 @@ void		color(t_env *env)
 	if (env->drawstart < 0)
 		env->drawstart = 0;
 	if (env->drawend >= Y_WIN)
-		env->drawend = Y_WIN - 1;
-	if (searchinlist(env->mapx, env->mapy, env) == 1)
-		env->color = 0xFF0000;
-	if (searchinlist(env->mapx, env->mapy, env) == 2)
-		env->color = 0x00FF00;
-	if (searchinlist(env->mapx, env->mapy, env) == 3)
-		env->color = 0x0000FF;
-	if (searchinlist(env->mapx, env->mapy, env) == 4)
-		env->color = 0xFF00FF;
-	else
-		env->color = 0xFFFF00;
+		env->drawend = Y_WIN;
 	if (env->side == 1)
-		env->color /= 2;
+		env->wallx = env->rayposx + ((env->mapy - env->rayposy + (1 - env->stepy) / 2) / env->raydiry) * env->raydirx;
+	else
+		env->wallx = env->rayposy + ((env->mapx - env->rayposx + (1 - env->stepx) / 2) / env->raydirx) * env->raydiry;
+	env->wallx -= floor(env->wallx);
+	env->texx = (int)(env->wallx * 64);
+	if (!env->side && env->raydirx > 0)
+		env->texx = 64 - env->texx - 1;
+	if (env->side && env->raydiry < 0)
+		env->texx = 64 - env->texx - 1;
+}
+
+void		get_texture(int x, int y, int color, t_env *env)
+{
+	while (y < env->drawend)
+	{
+		env->texy = (y * 2 - Y_WIN + env->lineheight) * 32 / env->lineheight;
+		if (searchinlist(env->mapx, env->mapy, env) == 1)
+			color = env->texture->tab1[64 * env->texy + env->texx];
+		else if (searchinlist(env->mapx, env->mapy, env) == 2)
+			color = env->texture->tab2[64 * env->texy + env->texx];
+		else if (searchinlist(env->mapx, env->mapy, env) == 3)
+			color = env->texture->tab3[64 * env->texy + env->texx];
+		else if (searchinlist(env->mapx, env->mapy, env) == 4)
+			color = env->texture->tab4[64 * env->texy + env->texx];
+		env->buffer[y][x] = color;
+		y++;
+	}
+	if (!env->side && env->raydirx > 0)
+	{
+		env->floorwallx = env->mapx;
+		env->floorwally = env->mapy + env->wallx;
+	}
+	else if (!env->side && env->raydirx < 0)
+	{
+		env->floorwallx = env->mapx + 1.0;
+		env->floorwally = env->mapy + env->wallx;
+	}
+	else if (env->side == 1 && env->raydirx < 0)
+	{
+		env->floorwallx = env->mapx + env->wallx;
+		env->floorwally = env->mapy;
+	}
+	else
+	{
+		env->floorwallx = env->mapx + env->wallx;
+		env->floorwally = env->mapy + 1.0;
+	}
+	env->distwall = env->perpwalldist;
+	env->distplayer = 0.0;
+	if (env->drawend < 0)
+		env->drawend = Y_WIN;
+	y = env->drawend;
+	while (y < Y_WIN)
+	{
+		env->c_dist = Y_WIN / (2.0 * y - Y_WIN);
+		env->weight = (env->c_dist - env->distplayer) / (env->distwall - env->distplayer);
+		env->c_floorx = env->weight * env->floorwallx + (1.0 - env->weight) * env->posx;
+		env->c_floory = env->weight * env->floorwally + (1.0 - env->weight) * env->posy;
+		env->floortexx = (int)(env->c_floorx * 64) % 64;
+		env->floortexy = (int)(env->c_floory * 64) % 64;
+		env->buffer[y][x] = env->texture->floor[64 * env->floortexy + env->floortexx];
+		env->buffer[Y_WIN - y][x] = env->texture->roof[64 * env->floortexy + env->floortexx];
+		y++;
+	}
 }
 
 void		raycasting(t_env *env)
 {
 	int		x;
+	double	color;
 
 	x = 0;
+	color = 0;
 	while (x < X_WIN)
 	{
 		init_ray(env, x);
@@ -95,8 +150,8 @@ void		raycasting(t_env *env)
 		}
 		else
 			env->perpwalldist = (env->mapy - env->rayposy + (1 - env->stepy) / 2) / env->raydiry;
-		color(env);
-		draw_vertical(x, env);
+		get_color(env);
+		get_texture(x, env->drawstart, color, env);
 		x++;
 	}
 }

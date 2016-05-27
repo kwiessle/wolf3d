@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 10:50:48 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/26 13:01:19 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/27 13:25:12 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,29 @@ int		keyboard(int keycode, t_env *env)
 	return (0);
 }
 
+void	clear_tab(t_env *env)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < Y_WIN)
+	{
+		x = 0;
+		while (x < X_WIN)
+		{
+			env->buffer[y][x] = 0;
+			x++;
+		}
+		y++;
+	}
+}
+
 void	expose(t_env *e)
 {
 	mlx_destroy_image(e->mlx, e->img->img);
 	e->img->img = mlx_new_image(e->mlx, X_WIN, Y_WIN);
+	clear_tab(e);
 	raycasting(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);
 }
