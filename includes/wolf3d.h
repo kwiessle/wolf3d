@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:28:40 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/27 19:12:36 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/28 12:45:07 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "time.h"
 # include "math.h"
 # include "../textures/plasma_maze.xpm"
-# include "../textures/zdp.xpm"
+# include "../textures/huf.xpm"
 
 t_map		*init_map(void);
 t_map		*add_node(t_map *list, t_map *elem);
