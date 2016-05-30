@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 11:58:23 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/29 20:35:48 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/30 14:15:43 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,25 @@ int			**init_tab(t_env *env)
 	return (buffer);
 }
 
-t_texture	*create_texture(t_env *env)
+t_texture	*create_texture(t_env *e)
 {
-	int			width;
-	int			height;
+	int			w;
+	int			h;
 	t_texture	*t;
 
 	if (!(t = (t_texture *)malloc(sizeof(t_texture))))
 		return (NULL);
-	t->t_1 = mlx_xpm_file_to_image(env->mlx, "./misc/mur.xpm", &width, &height);
-	t->tab1 = (int *)mlx_get_data_addr(t->t_1, &t->bpp, &t->size_line, &t->endian);
-	t->t_2 = mlx_xpm_file_to_image(env->mlx, "./misc/zdp.xpm", &width, &height);
-	t->tab2 = (int *)mlx_get_data_addr(t->t_2, &t->bpp, &t->size_line, &t->endian);
-	t->t_3 = mlx_xpm_file_to_image(env->mlx, "./misc/crack.xpm", &width, &height);
-	t->tab3 = (int *)mlx_get_data_addr(t->t_3, &t->bpp, &t->size_line, &t->endian);
-	t->t_4 = mlx_xpm_file_to_image(env->mlx, "./misc/aces.xpm", &width, &height);
-	t->tab4 = (int *)mlx_get_data_addr(t->t_4, &t->bpp, &t->size_line, &t->endian);
-	t->t_floor = mlx_xpm_file_to_image(env->mlx, "./misc/floor.xpm", &width, &height);
-	t->floor = (int *)mlx_get_data_addr(t->t_floor, &t->bpp, &t->size_line, &t->endian);
-	t->t_roof = mlx_xpm_file_to_image(env->mlx, "./misc/neon.xpm", &width, &height);
-	t->roof = (int *)mlx_get_data_addr(t->t_roof, &t->bpp, &t->size_line, &t->endian);
+	t->t_1 = mlx_xpm_file_to_image(e->mlx, "./misc/mur.xpm", &w, &h);
+	t->tab1 = (int *)mlx_get_data_addr(t->t_1, &t->bpp, &t->size, &t->end);
+	t->t_2 = mlx_xpm_file_to_image(e->mlx, "./misc/zdp.xpm", &w, &h);
+	t->tab2 = (int *)mlx_get_data_addr(t->t_2, &t->bpp, &t->size, &t->end);
+	t->t_3 = mlx_xpm_file_to_image(e->mlx, "./misc/crack.xpm", &w, &h);
+	t->tab3 = (int *)mlx_get_data_addr(t->t_3, &t->bpp, &t->size, &t->end);
+	t->t_4 = mlx_xpm_file_to_image(e->mlx, "./misc/aces.xpm", &w, &h);
+	t->tab4 = (int *)mlx_get_data_addr(t->t_4, &t->bpp, &t->size, &t->end);
+	t->t_floor = mlx_xpm_file_to_image(e->mlx, "./misc/floor.xpm", &w, &h);
+	t->floor = (int *)mlx_get_data_addr(t->t_floor, &t->bpp, &t->size, &t->end);
+	t->t_roof = mlx_xpm_file_to_image(e->mlx, "./misc/neon.xpm", &w, &h);
+	t->roof = (int *)mlx_get_data_addr(t->t_roof, &t->bpp, &t->size, &t->end);
 	return (t);
 }

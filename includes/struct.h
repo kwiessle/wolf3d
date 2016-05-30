@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 12:08:50 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/29 19:37:52 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/30 14:52:43 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct		s_img
 typedef struct		s_texture
 {
 	int				bpp;
-	int				size_line;
-	int				endian;
+	int				size;
+	int				end;
 	void			*t_1;
 	int				*tab1;
 	void			*t_2;
@@ -106,6 +106,5 @@ typedef struct		s_env
 	int				music;
 	t_texture		*texture;
 }					t_env;
-
 
 #endif

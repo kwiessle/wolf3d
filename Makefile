@@ -20,6 +20,7 @@ SRCS= srcs/main.c \
 	  srcs/key_function.c \
 	  srcs/key_hook.c \
 	  srcs/texture.c \
+	  srcs/get_texture.c \
 	  srcs/levels.c
 
 OBJS= $(SRCS:.c=.o)
@@ -61,6 +62,11 @@ fclean:	clean
 	@echo "\033[31m$(NAME) is deleted\033[0m"
 
 re:		fclean all
+
+norme: fclean
+	@norminette srcs/
+	@norminette includes/
+	@norminette libft/
 
 .PHONY: all clean fclean re
 

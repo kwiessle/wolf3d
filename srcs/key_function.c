@@ -6,21 +6,26 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 10:50:48 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/29 21:11:07 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/30 14:39:42 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int		close_wolf(t_env *env)
+{
+	if (env->music)
+		system("killall afplay");
+	free(env);
+	exit(EXIT_SUCCESS);
+}
 
 int		keyboard(int keycode, t_env *env)
 {
 	if (env->mlx == NULL)
 		return (0);
 	if (keycode == EXIT)
-	{
-		system("killall afplay");
-		exit(EXIT_SUCCESS);
-	}
+		close_wolf(env);
 	if (keycode == LEFT)
 		rot_left(env);
 	if (keycode == RIGHT)
@@ -29,6 +34,10 @@ int		keyboard(int keycode, t_env *env)
 		moove(keycode, env);
 	if (keycode == MUSIC)
 		music(env);
+	if (keycode == L_MOVE)
+		moove_left(env);
+	if (keycode == R_MOVE)
+		moove_right(env);
 	return (0);
 }
 
@@ -52,9 +61,23 @@ void	clear_tab(t_env *env)
 
 void	expose(t_env *e)
 {
-//	mlx_destroy_image(e->mlx, e->img->img);
-//	e->img = init_img(e);
 	clear_tab(e);
-	raycasting(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->img->img, 0, 0);
+	mlx_hook(e->win, 2, 1, keyboard, e);
+	mlx_hook(e->win, 17, 1L << 17, close_wolf, e);
+	mlx_loop_hook(e->mlx, raycasting, e);
+	mlx_loop(e->mlx);
+}
+
+void	music(t_env *env)
+{
+	if (env->music)
+	{
+		system("killall afplay");
+		env->music = 0;
+	}
+	else
+	{
+		system("afplay misc/theme.mp3&");
+		env->music = 1;
+	}
 }
