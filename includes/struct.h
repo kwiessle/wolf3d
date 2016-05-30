@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 12:08:50 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/27 13:21:06 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/29 19:37:52 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct		s_env
 	double			weight;
 	t_map			*map;
 	t_img			*img;
+	int				music;
 	t_texture		*texture;
 }					t_env;
 

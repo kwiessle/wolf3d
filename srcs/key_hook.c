@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 12:05:57 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/28 22:58:01 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/29 20:06:38 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,19 @@ void		moove(int keycode, t_env *e)
 			ft_putchar('\a');
 	}
 	expose(e);
+}
+
+void		music(t_env *env)
+{
+
+	if (env->music)
+	{
+		system("killall afplay");
+		env->music = 0;
+	}
+	else
+	{
+		system("afplay misc/theme.mp3&");
+		env->music = 1;
+	}
 }

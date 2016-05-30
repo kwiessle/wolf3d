@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:28:40 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/28 12:45:07 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/29 21:11:43 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,7 @@
 # include "define.h"
 # include "time.h"
 # include "math.h"
-# include "../textures/plasma_maze.xpm"
-# include "../textures/huf.xpm"
 
-t_map		*init_map(void);
-t_map		*add_node(t_map *list, t_map *elem);
-t_map		*convert_map(t_env *env, t_map *list, char *line);
-t_map		*get_map(int fd, t_env *env);
 int			check_line(char *line);
 int			check_border(char *line);
 t_env		*init_env(int fd);
@@ -40,7 +34,6 @@ void		raycasting(t_env *env);
 void		get_color(t_env *env);
 void		check_wall(t_env *env);
 void		init_ray(t_env *env, int x);
-//int			searchinlist(int x, int y, t_env *env);
 int			keyboard(int keycode, t_env *env);
 void		rot_left(t_env *env);
 void		rot_right(t_env *env);
@@ -51,6 +44,7 @@ t_texture	*create_texture(t_env *env);
 void		get_texture(int x, int y, int color, t_env *env);
 void		clear_tab(t_env *env);
 int			check_map(int x, int y);
+void		music(t_env *env);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 10:50:48 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/27 19:38:50 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/29 21:11:07 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ int		keyboard(int keycode, t_env *env)
 	if (env->mlx == NULL)
 		return (0);
 	if (keycode == EXIT)
+	{
+		system("killall afplay");
 		exit(EXIT_SUCCESS);
+	}
 	if (keycode == LEFT)
 		rot_left(env);
 	if (keycode == RIGHT)
 		rot_right(env);
 	if (keycode == UP || keycode == DOWN)
 		moove(keycode, env);
+	if (keycode == MUSIC)
+		music(env);
 	return (0);
 }
 
