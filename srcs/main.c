@@ -6,7 +6,7 @@
 /*   By: kwiessle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 11:30:01 by kwiessle          #+#    #+#             */
-/*   Updated: 2016/05/30 14:05:27 by kwiessle         ###   ########.fr       */
+/*   Updated: 2016/05/30 15:05:05 by kwiessle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		main(void)
 	if (!(menu = (t_img *)malloc(sizeof(t_img))))
 		return (0);
 	env = init_env();
-	menu->img = init_img(env);
 	menu->img = mlx_xpm_file_to_image(env->mlx, "misc/menu.xpm", &w, &h);
 	mlx_put_image_to_window(env->mlx, env->win, menu->img, 0, Y_WIN);
 	expose(env);
